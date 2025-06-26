@@ -1,0 +1,137 @@
+{% extends "base.html" %}
+
+{% block title %}Voter ID Card Application - Citizen AI{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+  <h1 class="text-center text-primary mb-4">Voter ID Card Application</h1>
+
+  <div class="mb-4">
+    <p>The Voter ID Card, officially known as the Electors Photo Identity Card (EPIC), is a photo identity document issued by the Election Commission of India (ECI) to every eligible citizen. Its primary purpose is to serve as proof of identity for Indian citizens while casting their ballot in municipal, state, and national elections.</p>
+  </div>
+
+  <div class="mb-5">
+    <h2 class="text-info">Brief Description – What is it?</h2>
+    <p>The Voter ID Card is a secure document containing the voter's photograph, name, parent/spouse name, age, gender, and unique EPIC number. It prevents impersonation and facilitates accurate voter identification at polling booths. While essential for voting, it's also widely accepted as valid proof of identity and residence for various official purposes.</p>
+  </div>
+
+  <div class="mb-5">
+    <h2 class="text-info">Required Documents</h2>
+    
+    <div class="row">
+      <div class="col-md-4">
+        <h4>Proof of Identity (any one):</h4>
+        <ul>
+          <li>Aadhaar Card</li>
+          <li>PAN Card</li>
+          <li>Driving License</li>
+          <li>Passport</li>
+          <li>Bank Passbook with photo</li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h4>Proof of Address (any one):</h4>
+        <ul>
+          <li>Aadhaar Card</li>
+          <li>Passport</li>
+          <li>Utility bills (<1 year old)</li>
+          <li>Bank/Post Office Passbook</li>
+          <li>Rent Agreement</li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h4>Proof of Age (any one):</h4>
+        <ul>
+          <li>Birth Certificate</li>
+          <li>10th Standard Certificate</li>
+          <li>Aadhaar/PAN with DoB</li>
+          <li>Passport/Driving License</li>
+        </ul>
+      </div>
+    </div>
+    <div class="mt-3">
+      <p><strong>Photograph:</strong> One recent passport-sized color photo (uploaded online or taken at ERO office)</p>
+    </div>
+  </div>
+
+  <div class="mb-5">
+    <h2 class="text-info">Eligibility Criteria</h2>
+    <ul>
+      <li><strong>Citizenship:</strong> Must be an Indian citizen</li>
+      <li><strong>Age:</strong> 18+ years by January 1st of the revision year</li>
+      <li><strong>Residency:</strong> Ordinary resident of the constituency</li>
+      <li><strong>No Disqualifications:</strong> Not barred by law (unsound mind, certain convictions)</li>
+      <li><strong>Single Registration:</strong> Cannot be enrolled in multiple constituencies</li>
+    </ul>
+  </div>
+
+  <div class="mb-5">
+    <h2 class="text-info">Application Procedure</h2>
+    
+    <h4>Online Method (Recommended):</h4>
+    <ol>
+      <li>Visit <a href="https://voters.eci.gov.in/" target="_blank">Voters' Service Portal</a></li>
+      <li>Register/Login and select Form 6</li>
+      <li>Fill personal, address, and family details</li>
+      <li>Upload documents and photograph</li>
+      <li>Submit and note reference number</li>
+    </ol>
+    
+    <h4>Offline Method:</h4>
+    <ol>
+      <li>Obtain Form 6 from ERO office/BLO/Post Office</li>
+      <li>Fill form and attach self-attested copies</li>
+      <li>Submit to ERO office/BLO</li>
+      <li>Get acknowledgment receipt</li>
+    </ol>
+    
+    <h4>Post-Submission Process:</h4>
+    <ul>
+      <li>Field verification by Booth Level Officer</li>
+      <li>Public scrutiny period</li>
+      <li>Track status using reference number</li>
+      <li>Receive e-EPIC (downloadable) and physical card by post</li>
+    </ul>
+  </div>
+
+  <div class="mb-5">
+    <h2 class="text-info">Trusted Websites</h2>
+    <ul>
+      <li><a href="https://www.eci.gov.in/" target="_blank">Election Commission of India</a></li>
+      <li><a href="https://voters.eci.gov.in/" target="_blank">Voters' Service Portal</a></li>
+      <li><a href="https://ceoandhra.nic.in/" target="_blank">Andhra Pradesh CEO Office</a></li>
+    </ul>
+  </div>
+
+  <div class="mb-5">
+    <h2 class="text-info">FAQs & Important Tips</h2>
+    
+    <div class="mb-3">
+      <strong class="text-danger">Q:</strong> What is the "Qualifying Date"?<br>
+      <span class="ms-3">A: January 1st of the revision year - you must be 18+ by this date to enroll that year.</span>
+    </div>
+    
+    <div class="mb-3">
+      <strong class="text-danger">Q:</strong> How to check my name in voter list?<br>
+      <span class="ms-3">A: Search on Voters' Service Portal using name, relative's name or EPIC number.</span>
+    </div>
+    
+    <div class="mb-3">
+      <strong class="text-danger">Q:</strong> What if I move constituencies?<br>
+      <span class="ms-3">A: Submit Form 6 for new constituency and request deletion from old one.</span>
+    </div>
+    
+    <div class="alert alert-success mt-4">
+      <h5>Voter's Checklist:</h5>
+      <ul>
+        <li>Apply well before elections (don't wait for announcements)</li>
+        <li>Download e-EPIC as soon as approved</li>
+        <li>Participate in special revision drives when announced</li>
+        <li>Consider voluntary Aadhaar linking via Form 6B</li>
+        <li>Update details promptly if you change address</li>
+        <li>Physical card may take 15-30 days after approval</li>
+      </ul>
+    </div>
+  </div>
+</div>
+{% endblock %}

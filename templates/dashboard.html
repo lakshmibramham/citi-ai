@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - Citizen AI{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <h2 class="mb-4">📊 Citizen AI Dashboard</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card border-primary">
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-primary">Total AI Interactions</h5>
+                        <p class="display-5">{{ total_interactions }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card border-success">
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-success">Feedback Entries</h5>
+                        <p class="display-5">{{ total_feedback }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card border-warning">
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-warning">Latest Concerns</h5>
+                        <p class="display-5">{{ recent_concerns | length }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr class="my-5">
+
+        <h4>📈 Sentiment Overview</h4>
+        <div class="row g-3">
+            <div class="col-sm-4">
+                <div class="alert alert-success text-center">
+                    Positive: <strong>{{ sentiment_counts.positive }}</strong>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="alert alert-warning text-center">
+                    Neutral: <strong>{{ sentiment_counts.neutral }}</strong>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="alert alert-danger text-center">
+                    Negative: <strong>{{ sentiment_counts.negative }}</strong>
+                </div>
+            </div>
+        </div>
+
+        <hr class="my-5">
+
+        <h4>📝 Recent Concerns</h4>
+        {% if recent_concerns %}
+        <ul class="list-group">
+            {% for concern in recent_concerns %}
+            <li class="list-group-item">
+                <strong>{{ concern.type }}</strong> – {{ concern.text }}
+                <span class="text-muted float-end">{{ concern.timestamp }}</span>
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p class="text-muted">No concerns submitted yet.</p>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

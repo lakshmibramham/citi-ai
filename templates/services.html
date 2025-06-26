@@ -1,0 +1,177 @@
+{% extends "base.html" %}
+
+{% block title %}Services - Citizen AI{% endblock %}
+
+{% block content %}
+<section class="py-5 service-section">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-5 mb-3">Explore Services via CIT-AI</h2>
+            <p class="lead text-muted">
+                CIT-AI offers streamlined access to crucial government services, helping users understand procedures,
+                check eligibility, and take action—all in their preferred language.
+            </p>
+        </div>
+
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            <!-- PAN & Aadhaar Card -->
+            <div class="col">
+                <div class="card h-100 border-primary shadow-sm service-card">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="card-title mb-0">🪪 PAN & Aadhaar Services</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">
+                            Get detailed guidance on applying for a PAN card, linking Aadhaar, updating personal details,
+                            and tracking application status.
+                        </p>
+                        <ul class="list-group list-group-flush mb-3">
+                            <li class="list-group-item small">New PAN/Aadhaar enrollment</li>
+                            <li class="list-group-item small">Linking and corrections</li>
+                            <li class="list-group-item small">Document checklist</li>
+                            <li class="list-group-item small">Status tracking</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer bg-transparent">
+                        <a href="{{ url_for('pan') }}" class="btn btn-sm btn-outline-primary me-2">PAN Guide</a>
+                        <a href="{{ url_for('aadhaar') }}" class="btn btn-sm btn-outline-primary">Aadhaar Guide</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Voter ID & Ration Card -->
+            <div class="col">
+                <div class="card h-100 border-success shadow-sm service-card">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="card-title mb-0">🗳️ Voter ID & Ration Card</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">
+                            Know how to register for a Voter ID or Ration Card, update your details,
+                            or download digital versions.
+                        </p>
+                        <ul class="list-group list-group-flush mb-3">
+                            <li class="list-group-item small">Voter ID registration & correction</li>
+                            <li class="list-group-item small">Ration Card eligibility & online apply</li>
+                            <li class="list-group-item small">Track application & e-Download</li>
+                            <li class="list-group-item small">Link Aadhaar to ration card</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer bg-transparent">
+                        <a href="{{ url_for('voter') }}" class="btn btn-sm btn-outline-success me-2">Voter ID</a>
+                        <a href="{{ url_for('ration') }}" class="btn btn-sm btn-outline-success">Ration Card</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Driving License -->
+            <div class="col">
+                <div class="card h-100 border-warning shadow-sm service-card">
+                    <div class="card-header bg-warning text-dark">
+                        <h5 class="card-title mb-0">🚗 Driving License</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">
+                            Understand the two-step process to obtain a Driving License: from Learner's to Permanent DL.
+                        </p>
+                        <ul class="list-group list-group-flush mb-3">
+                            <li class="list-group-item small">Apply online (LL & DL)</li>
+                            <li class="list-group-item small">Slot booking & test prep</li>
+                            <li class="list-group-item small">Renewal & status tracking</li>
+                            <li class="list-group-item small">Duplicate DL application</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer bg-transparent">
+                        <a href="{{ url_for('dl') }}" class="btn btn-sm btn-outline-warning">Full Guide</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Healthcare & Insurance -->
+            <div class="col">
+                <div class="card h-100 border-info shadow-sm service-card">
+                    <div class="card-header bg-info text-white">
+                        <h5 class="card-title mb-0">🏥 Healthcare & Insurance</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">
+                            Explore health benefits like Ayushman Bharat and state-specific schemes available to eligible citizens.
+                        </p>
+                        <ul class="list-group list-group-flush mb-3">
+                            <li class="list-group-item small">PM-JAY scheme details</li>
+                            <li class="list-group-item small">Check eligibility with AI</li>
+                            <li class="list-group-item small">Know your health card benefits</li>
+                            <li class="list-group-item small">Hospital empanelment</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Subsidy & Welfare -->
+            <div class="col">
+                <div class="card h-100 border-danger shadow-sm service-card">
+                    <div class="card-header bg-danger text-white">
+                        <h5 class="card-title mb-0">💡 Subsidy & Welfare Schemes</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">
+                            Access information about LPG subsidies, electricity schemes, housing schemes,
+                            and other citizen welfare programs.
+                        </p>
+                        <ul class="list-group list-group-flush mb-3">
+                            <li class="list-group-item small">PMAY (Urban & Rural)</li>
+                            <li class="list-group-item small">Ujjwala Yojana, KYC, subsidy status</li>
+                            <li class="list-group-item small">AI-guided eligibility checker</li>
+                            <li class="list-group-item small">State-specific schemes</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Other Services -->
+            <div class="col">
+                <div class="card h-100 border-secondary shadow-sm service-card">
+                    <div class="card-header bg-secondary text-white">
+                        <h5 class="card-title mb-0">📋 Other Essential Services</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">
+                            Additional government services including passport, property registration,
+                            and business licenses.
+                        </p>
+                        <ul class="list-group list-group-flush mb-3">
+                            <li class="list-group-item small">Passport application</li>
+                            <li class="list-group-item small">Property registration</li>
+                            <li class="list-group-item small">Business licenses</li>
+                            <li class="list-group-item small">Pension schemes</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-5">
+            <div class="d-inline-flex flex-column flex-md-row gap-3">
+                <a href="{{ url_for('chat') }}" class="btn btn-primary btn-lg px-4">
+                    <i class="fas fa-robot me-2"></i> Ask the AI Assistant
+                </a>
+
+            </div>
+
+            <div class="mt-4">
+                <p class="text-muted small">
+                    <i class="fas fa-language me-1"></i> Available in:
+                    <a href="#" class="text-decoration-none">Hindi</a>,
+                    <a href="#" class="text-decoration-none">Telugu</a>,
+                    <a href="#" class="text-decoration-none">Tamil</a>,
+                    <a href="#" class="text-decoration-none">Kannada</a>,
+                    <a href="#" class="text-decoration-none">More...</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

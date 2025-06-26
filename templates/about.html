@@ -1,0 +1,227 @@
+{% extends "base.html" %}
+
+{% block title %}Citizen AI - Intelligent Citizen Engagement Platform{% endblock %}
+
+{% block content %}
+<!-- Home Page -->
+<div class="container-fluid p-0">
+    <!-- Hero Section -->
+    <section class="hero-section text-center text-white py-5">
+        <div class="container">
+            <h1 class="display-4">Welcome to <span>Cit-AI</span></h1>
+            <p class="lead">Your smart digital guide to government services</p>
+            <button class="btn btn-primary hero-cta">Chat with AI Assistant</button>
+        </div>
+    </section>
+
+    <!-- Trending Services -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Trending Government Services</h2>
+           <div class="row">
+    <div class="col-md-2 col-6 mb-4">
+        <a href="{{ url_for('pan') }}" class="btn btn-outline-primary w-100">PAN Card</a>
+    </div>
+    <div class="col-md-2 col-6 mb-4">
+        <a href="{{ url_for('aadhaar') }}" class="btn btn-outline-primary w-100">Aadhaar</a>
+    </div>
+    <div class="col-md-2 col-6 mb-4">
+        <a href="{{ url_for('voter') }}" class="btn btn-outline-primary w-100">Voter ID</a>
+    </div>
+    <div class="col-md-2 col-6 mb-4">
+        <a href="{{ url_for('dl') }}" class="btn btn-outline-primary w-100">Driving License</a>
+    </div>
+    <div class="col-md-2 col-6 mb-4">
+        <a href="{{ url_for('ration') }}" class="btn btn-outline-primary w-100">Ration Card</a>
+    </div>
+    <div class="col-md-2 col-6 mb-4">
+        <a href=" https://www.india.gov.in" class="btn btn-outline-secondary w-100" target="_blank">View All</a>
+    </div>
+</div>
+
+        </div>
+    </section>
+
+    <!-- Quick Guide Cards -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">Quick Guides</h2>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card service-card h-100">
+                        <img src="/static/images/pan.png" class="card-img-top" alt="PAN Card">
+                        <div class="card-body">
+                            <h5 class="card-title">PAN Card Application</h5>
+                            <p class="card-text">Complete guide to applying for a new PAN card, required documents, and tracking status.</p>
+                            <a href="{{ url_for('pan') }}" class="btn btn-primary">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card service-card h-100">
+                        <img src="/static/images/aadhaar.png" class="card-img-top" alt="Aadhaar Card">
+                        <div class="card-body">
+                            <h5 class="card-title">Aadhaar Card</h5>
+                            <p class="card-text">Step-by-step process for Aadhaar enrollment and updates.</p>
+                            <a href="{{ url_for('aadhaar') }}" class="btn btn-primary">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card service-card h-100">
+                        <img src="/static/images/voter.png" class="card-img-top" alt="Voter ID">
+                        <div class="card-body">
+                            <h5 class="card-title">Voter ID Registration</h5>
+                            <p class="card-text">How to register as a voter and get your Electors Photo Identity Card.</p>
+                            <a href="{{ url_for('voter') }}" class="btn btn-primary">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Government Updates -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Latest Government Updates</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="/static/images/aadhaar.png" class="card-img-top" alt="Update 1">
+                        <div class="card-body">
+                            <h5 class="card-title">New Aadhaar Update Rules</h5>
+                            <p class="card-text">UIDAI announces simplified process for Aadhaar updates.</p>
+                            <a href="https://myaadhaar.uidai.gov.in/" class="btn btn-sm btn-outline-primary" target="_blank">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="/static/images/voter.png" class="card-img-top" alt="Update 2">
+                        <div class="card-body">
+                            <h5 class="card-title">Voter ID Online Services</h5>
+                            <p class="card-text">ECI launches new portal for voter registration and corrections.</p>
+                            <a href="https://www.nvsp.in" class="btn btn-sm btn-outline-primary" target="_blank">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="/static/images/ration.png" class="card-img-top" alt="Update 3">
+                        <div class="card-body">
+                            <h5 class="card-title">Ration Card Scheme Expansion</h5>
+                            <p class="card-text">Government extends benefits to additional 5 million families.</p>
+                            <a href="https://nfsa.gov.in" class="btn btn-sm btn-outline-primary" target="_blank">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- AI Assistant Page -->
+<div class="container ai-assistant" id="assistant" style="display:none;">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <div class="chat-container">
+                <div class="chat-header bg-primary text-white p-3">
+                    <h4>AI Assistant</h4>
+                    <div class="float-end">
+                        <select class="form-select form-select-sm language-select">
+                            <option value="en">English</option>
+                            <option value="hi">Hindi</option>
+                            <option value="te">Telugu</option>
+                            <option value="ta">Tamil</option>
+                            <option value="kn">Kannada</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="chat-body p-3" id="chat-messages">
+                    <div class="bot-message">
+                        <p>Hello! I'm your Citizen AI assistant. How can I help you with government services today?</p>
+                    </div>
+                </div>
+                <div class="chat-footer p-3 bg-light">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Ask about any government service..." id="user-input">
+                        <button class="btn btn-outline-secondary" type="button" id="voice-btn">
+                            <i class="bi bi-mic"></i>
+                        </button>
+                        <button class="btn btn-primary" type="button" id="send-btn">Send</button>
+                    </div>
+                    <div class="form-check form-switch mt-2">
+                        <input class="form-check-input" type="checkbox" id="voice-toggle">
+                        <label class="form-check-label" for="voice-toggle">Enable Voice Responses</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Public Feedback Section -->
+<div class="container my-5" id="feedback">
+    <div class="row">
+        <div class="col-md-6">
+            <h3>Share Your Feedback</h3>
+            <form id="feedback-form">
+                <div class="mb-3">
+                    <label for="feedback-type" class="form-label">Feedback Type</label>
+                    <select class="form-select" id="feedback-type">
+                        <option value="general">General Feedback</option>
+                        <option value="service">Service Experience</option>
+                        <option value="suggestion">Suggestion</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="feedback-text" class="form-label">Your Feedback</label>
+                    <textarea class="form-control" id="feedback-text" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <h3>Report Public Issues</h3>
+            <form id="issue-form">
+                <div class="mb-3">
+                    <label for="issue-type" class="form-label">Issue Type</label>
+                    <select class="form-select" id="issue-type">
+                        <option value="infrastructure">Infrastructure (Roads, Buildings)</option>
+                        <option value="sanitation">Sanitation</option>
+                        <option value="safety">Public Safety</option>
+                        <option value="environment">Environment</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="issue-location" class="form-label">Location</label>
+                    <input type="text" class="form-control" id="issue-location" placeholder="Enter location">
+                </div>
+                <div class="mb-3">
+                    <label for="issue-description" class="form-label">Description</label>
+                    <textarea class="form-control" id="issue-description" rows="3"></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="issue-photo" class="form-label">Upload Photo (Optional)</label>
+                    <input class="form-control" type="file" id="issue-photo">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit Report</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+// Toggle AI Assistant
+document.querySelector('.hero-cta').addEventListener('click', function() {
+    document.querySelector('.container-fluid').style.display = 'none';
+    document.getElementById('assistant').style.display = 'block';
+});
+
+// Sample service pages would extend this template with their specific content
+</script>
+{% endblock %}

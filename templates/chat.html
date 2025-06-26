@@ -1,0 +1,214 @@
+{% extends "base.html" %}
+
+{% block title %}AI Assistant - Citizen AI{% endblock %}
+
+{% block content %}
+<section class="chat-header py-4 bg-primary text-white">
+    <div class="container">
+        <h1><i class="fas fa-robot me-2"></i> Cit-AI Assistant</h1>
+        <p class="mb-0">Ask about any government service. Instant answers powered by AI.</p>
+    </div>
+</section>
+
+<section class="chat-main py-5">
+    <div class="container">
+        <div class="row">
+            <!-- Chat Section -->
+            <div class="col-lg-8">
+                <div class="card mb-4">
+                    <div class="card-header bg-light d-flex justify-content-between align-items-center">
+                        <strong>Chat with Cit-AI</strong>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="speakToggle" checked>
+                            <label class="form-check-label" for="speakToggle">🔊 Speak AI Responses</label>
+                        </div>
+                    </div>
+                    <div class="card-body chat-messages" id="chatMessages">
+                        {% for message in chat_history %}
+                        <div class="message {% if message.role == 'user' %}user-message{% else %}ai-message{% endif %}">
+                            <div class="message-header">
+                                <strong>{% if message.role == 'user' %}You{% else %}CitizenAI{% endif %}</strong>
+                                <span class="message-time">{{ message.timestamp }}</span>
+                            </div>
+                            <div class="message-content">
+                                {{ message.content | safe }}
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div class="card-footer">
+                        <form action="{{ url_for('ask_question') }}" method="POST">
+                            <div class="mb-2">
+                                <label for="language">Choose language:</label>
+                                <select class="form-select" id="language" name="language" required>
+                                    <option value="English" selected>English</option>
+                                    <option value="Hindi">Hindi</option>
+                                    <option value="Telugu">Telugu</option>
+                                    <option value="Tamil">Tamil</option>
+                                    <option value="Kannada">Kannada</option>
+                                </select>
+                            </div>
+                            <div class="input-group">
+                                <input type="text" id="questionInput" name="question" class="form-control" placeholder="Ask about PAN, Aadhaar, schemes..." required>
+                                <button type="button" class="btn btn-outline-secondary" onclick="startListening()">
+                                    <i class="fas fa-microphone"></i>
+                                </button>
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-paper-plane"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feedback & Concern Section -->
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="card-header bg-light">
+                        <ul class="nav nav-tabs card-header-tabs">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-bs-toggle="tab" href="#feedback">Feedback</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-bs-toggle="tab" href="#concern">Report Issue</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-body tab-content">
+                        <div class="tab-pane fade show active" id="feedback">
+                            <h5>Feedback on this service</h5>
+                            <form action="{{ url_for('submit_feedback') }}" method="POST">
+                                <div class="mb-3">
+                                    <textarea class="form-control" name="feedback" rows="4" placeholder="What do you think about this service?" required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-success w-100">Submit Feedback</button>
+                            </form>
+                            {% if sentiment %}
+                            <div class="mt-3 alert alert-info">
+                                <strong>Sentiment Detected:</strong> {{ sentiment }}
+                            </div>
+                            {% endif %}
+                        </div>
+
+                        <div class="tab-pane fade" id="concern">
+                            <h5>Report a Public Issue</h5>
+                            <form action="{{ url_for('submit_concern') }}" method="POST">
+                                <div class="mb-3">
+                                    <select class="form-select" name="concern_type">
+                                        <option selected disabled>Select issue type</option>
+                                        <option value="Infrastructure">Infrastructure</option>
+                                        <option value="Public Safety">Public Safety</option>
+                                        <option value="Environment">Environment</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <textarea class="form-control" name="concern" rows="4" placeholder="Describe the issue..." required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-warning w-100">Submit Concern</button>
+                            </form>
+                            {% if concern_submitted %}
+                            <div class="alert alert-success mt-3">
+                                Your concern has been logged (ID: {{ concern_submitted }})
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    const chatMessages = document.getElementById('chatMessages');
+    if (chatMessages) {
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    // Voice Input (STT)
+    function startListening() {
+        const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+        const language = document.getElementById("language").value;
+        const inputField = document.getElementById("questionInput");
+
+        const langMap = {
+            English: "en-IN",
+            Hindi: "hi-IN",
+            Telugu: "te-IN",
+            Tamil: "ta-IN",
+            Kannada: "kn-IN"
+        };
+
+        recognition.lang = langMap[language] || "en-IN";
+        recognition.interimResults = false;
+        recognition.maxAlternatives = 1;
+
+        recognition.start();
+
+        recognition.onstart = () => inputField.placeholder = "🎙️ Listening...";
+        recognition.onresult = (event) => {
+            const spokenText = event.results[0][0].transcript;
+            inputField.value = spokenText;
+        };
+        recognition.onerror = (event) => alert("Voice recognition failed: " + event.error);
+        recognition.onend = () => inputField.placeholder = "Ask about PAN, Aadhaar, schemes...";
+    }
+
+    // TTS with Play/Stop toggle per message
+    document.addEventListener("DOMContentLoaded", () => {
+        const toggle = document.getElementById("speakToggle");
+
+        let currentUtterance = null;
+        let currentlySpeakingBtn = null;
+
+        document.querySelectorAll(".ai-message").forEach(msgEl => {
+            const speakBtn = document.createElement("button");
+            speakBtn.className = "btn btn-sm btn-outline-primary mt-2";
+            speakBtn.textContent = "🔊 Read Aloud";
+
+            speakBtn.addEventListener("click", () => {
+                if (!toggle || !toggle.checked) {
+                    alert("Please enable the toggle to use voice playback.");
+                    return;
+                }
+
+                // Stop current speech if playing
+                if (speechSynthesis.speaking) {
+                    speechSynthesis.cancel();
+                    if (currentlySpeakingBtn) currentlySpeakingBtn.textContent = "🔊 Read Aloud";
+                    // If same button clicked again → treat as stop
+                    if (currentlySpeakingBtn === speakBtn) {
+                        currentUtterance = null;
+                        currentlySpeakingBtn = null;
+                        return;
+                    }
+                }
+
+                // Create and play new speech
+                const msg = msgEl.querySelector(".message-content").innerText;
+                const utterance = new SpeechSynthesisUtterance(msg);
+                utterance.lang = 'en-IN';
+                speechSynthesis.speak(utterance);
+                speakBtn.textContent = "⏹️ Stop";
+
+                currentUtterance = utterance;
+                currentlySpeakingBtn = speakBtn;
+
+                utterance.onend = () => {
+                    if (currentlySpeakingBtn) currentlySpeakingBtn.textContent = "🔊 Read Aloud";
+                    currentUtterance = null;
+                    currentlySpeakingBtn = null;
+                };
+            });
+
+            msgEl.querySelector(".message-content").appendChild(speakBtn);
+        });
+    });
+</script>
+{% endblock %}
+

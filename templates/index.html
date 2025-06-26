@@ -1,0 +1,158 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Citizen AI{% endblock %}
+
+{% block content %}
+<section class="py-5 text-center bg-light">
+    <div class="container">
+        <h1 class="display-4 mb-3">Welcome to Cit-AI</h1>
+        <p class="lead">Your smart assistant for navigating government services and civic support.</p>
+        <a href="{{ url_for('chat') }}" class="btn btn-primary btn-lg mt-3">
+            <i class="fas fa-robot me-1"></i> Chat with AI Assistant
+        </a>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <i class="fas fa-lightbulb fa-2x mb-3 text-warning"></i>
+                        <h5 class="card-title">Instant Guidance</h5>
+                        <p class="card-text">Ask about PAN, Aadhaar, subsidies, welfare, and more — 24/7.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <i class="fas fa-chart-line fa-2x mb-3 text-success"></i>
+                        <h5 class="card-title">Feedback Monitoring</h5>
+                        <p class="card-text">See real-time public sentiment from user feedback and ratings.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <i class="fas fa-bullhorn fa-2x mb-3 text-danger"></i>
+                        <h5 class="card-title">Public Issue Reporting</h5>
+                        <p class="card-text">Log issues directly with authorities and track the latest concerns.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- HERO VIDEO SECTION -->
+<section class="position-relative">
+  <video autoplay muted loop playsinline class="w-100" style="height: 90vh; object-fit: cover;">
+    <source src="{{ url_for('static', filename='videos/cit-ai-promo.mp4') }}" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  <div class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center text-white bg-dark bg-opacity-50 text-center px-3">
+    <img src="{{ url_for('static', filename='images/cit-ai-logo.jpg') }}" alt="CIT-AI Logo" class="mb-3" style="height: 64px;">
+    <h1 class="display-4 fw-bold">CIT-AI</h1>
+    <p class="lead">Smarter Governance, Empowered Citizens – in Every Language.</p>
+    <a href="{{ url_for('chat') }}" class="btn btn-light btn-lg mt-3">
+      <i class="fas fa-robot me-2"></i> Ask the AI Assistant
+    </a>
+  </div>
+</section>
+
+<!-- VIDEO MODAL TRIGGER -->
+<div class="text-center my-5">
+  <button class="btn btn-outline-light btn-lg" data-bs-toggle="modal" data-bs-target="#videoModal">
+    ▶️ Watch How CIT-AI Works
+  </button>
+</div>
+
+<!-- VIDEO MODAL -->
+<div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="videoModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-body p-0">
+        <div class="ratio ratio-16x9">
+          <video id="citAiVideo" controls>
+            <source src="{{ url_for('static', filename='videos/cit-ai-promo.mp4') }}" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% block scripts %}
+<script>
+  // Pause and reset video when modal closes
+  document.getElementById('videoModal').addEventListener('hidden.bs.modal', function () {
+    const video = document.getElementById('citAiVideo');
+    if (video) {
+      video.pause();
+      video.currentTime = 0;
+    }
+  });
+</script>
+{% endblock %}
+
+
+<!-- TRENDING TOPICS -->
+<section class="py-4">
+  <div class="container text-center">
+    <h3 class="mb-3">🔥 Trending Topics</h3>
+    <div class="d-flex flex-wrap justify-content-center gap-3">
+      <a href="/services/pan" class="btn btn-outline-primary">PAN Card</a>
+      <a href="/services/aadhaar" class="btn btn-outline-primary">Aadhaar</a>
+      <a href="/services/voter" class="btn btn-outline-primary">Voter ID</a>
+      <a href="/services/schemes" class="btn btn-outline-primary">Schemes</a>
+      <a href="/services/dl" class="btn btn-outline-primary">Driving License</a>
+    </div>
+  </div>
+</section>
+
+<!-- QUICK GUIDE SECTION -->
+<section class="py-5 bg-light">
+  <div class="container">
+    <h3 class="mb-4">🧭 Quick Guide</h3>
+    <div class="row g-4">
+      {% for item in quick_guide %}
+      <div class="col-md-4 col-lg-2">
+        <div class="card h-100 text-center shadow-sm">
+          <a href="{{ item.link }}" class="text-decoration-none text-dark">
+            <img src="{{ item.image }}" class="card-img-top p-2" alt="{{ item.title }}">
+            <div class="card-body">
+              <h6 class="card-title fw-bold">{{ item.title }}</h6>
+              <p class="card-text small">{{ item.description }}</p>
+            </div>
+          </a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- LATEST UPDATES -->
+<section class="py-5">
+  <div class="container">
+    <h3 class="mb-4">📢 Latest Government Updates</h3>
+    <div class="row g-4">
+      {% for update in latest_updates %}
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100 shadow-sm">
+          <img src="{{ update.image }}" class="card-img-top" alt="Update">
+          <div class="card-body">
+            <h5 class="card-title">{{ update.title }}</h5>
+            <p class="card-text small">{{ update.description }}</p>
+            <a href="{{ update.link }}" class="btn btn-outline-primary btn-sm" target="_blank">View More</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

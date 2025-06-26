@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Citizen AI{% endblock %}</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="{{ url_for('home') }}">
+    <img src="{{ url_for('static', filename='images/cit-ai-logo.jpg') }}" alt="CIT-AI Logo" height="32">
+    <span class="fw-bold text-primary">CIT-AI</span>
+</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('home') }}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('about') }}">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('services') }}">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('chat') }}">AI Assistant</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('dashboard') }}">Dashboard</a>
+                    </li>
+                    <!-- 🌐 Language Dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            🌐 Language
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
+                            <li><a class="dropdown-item" href="#" onclick="translatePage('en')">English</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="translatePage('hi')">Hindi</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="translatePage('te')">Telugu</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="translatePage('ta')">Tamil</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="translatePage('kn')">Kannada</a></li>
+                        </ul>
+                    </li>
+                       <!-- Profile Dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            👤 Profile
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end text-center p-3" style="width: 250px;">
+                            {% if not session.get('user') %}
+                                <div class="mb-2">
+                                    <i class="fas fa-user-circle fa-3x text-secondary"></i>
+                                    <p class="mt-2 mb-1">You are not yet logged in.</p>
+                                </div>
+                                <a href="{{ url_for('login') }}" class="btn btn-primary w-100 mb-2">Login</a>
+                                <a href="{{ url_for('signup') }}" class="btn btn-outline-primary w-100">Sign Up</a>
+                            {% else %}
+                                <div class="mb-2">
+                                    <i class="fas fa-user-circle fa-3x text-primary"></i>
+                                    <p class="mt-2 mb-1"><strong>{{ session['user']['name'] }}</strong></p>
+                                    <small>{{ session['user']['email'] }}</small>
+                                </div>
+                                <a href="{{ url_for('logout') }}" class="btn btn-danger w-100">Logout</a>
+                            {% endif %}
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container my-4">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }} alert-dismissible fade show">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="bg-dark text-white py-4 mt-4">
+        <div class="container text-center">
+            <p class="mb-0">Cit-AI Platform &copy; 2023</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Language Sync Script -->
+    <script>
+      function translatePage(lang) {
+        localStorage.setItem('citizen_language', lang);
+        const frame = document.querySelector('iframe.goog-te-banner-frame');
+        if (frame) frame.remove();
+
+        const select = document.querySelector('.goog-te-combo');
+        if (select) {
+          select.value = lang;
+          select.dispatchEvent(new Event('change'));
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const savedLang = localStorage.getItem('citizen_language');
+        if (savedLang) {
+          const interval = setInterval(() => {
+            const select = document.querySelector('.goog-te-combo');
+            if (select) {
+              select.value = savedLang;
+              select.dispatchEvent(new Event('change'));
+              clearInterval(interval);
+            }
+          }, 1000);
+        }
+      });
+    </script>
+
+    <!-- Google Translate Widget -->
+    <div id="google_translate_element" style="display: none;"></div>
+    <script type="text/javascript">
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+          pageLanguage: 'en',
+          includedLanguages: 'en,hi,te,ta,kn',
+          layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+        }, 'google_translate_element');
+      }
+    </script>
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <!-- Firebase App (core SDK) -->
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+
+<script>
+  // TODO: Replace with your actual Firebase project config
+  const firebaseConfig = {
+     apiKey: "AIzaSyA7RvZqXBNjd6IBsWtmhufAlviZZet-qdE",
+  authDomain: "cit-ai.firebaseapp.com",
+  projectId: "cit-ai",
+  storageBucket: "cit-ai.firebasestorage.app",
+  messagingSenderId: "53533974619",
+  appId: "1:53533974619:web:606a0c192b87c74d089f7e"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+</script>
+
+
+    {% block scripts %}{% endblock %}
+</body>
+</html>

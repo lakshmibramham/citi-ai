@@ -1,0 +1,164 @@
+{% extends "base.html" %}
+
+{% block title %}Aadhaar Card Application - Citizen AI{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+  <h1 class="text-center text-primary mb-4">Aadhaar Card Application</h1>
+
+  <div class="mb-4">
+    <p>The Aadhaar card is arguably the most ubiquitous identification document in India, serving as a cornerstone for government services, financial inclusion, and proof of residency. It's a 12-digit unique identification number issued by the Unique Identification Authority of India (UIDAI), an autonomous body established by the Government of India. Unlike other IDs, Aadhaar is based on biometric and demographic data, making it virtually impossible to duplicate, thus ensuring a unique identity for every resident.</p>
+  </div>
+
+  <div class="mb-5">
+    <h2 class="text-info">Brief Description – What is it?</h2>
+    <p>Aadhaar is a unique identity number that captures an individual's demographic information (name, address, date of birth, gender) and biometric data (10 fingerprints, 2 iris scans, and a facial photograph). It's designed to be a universal identifier, simplifying access to various government schemes and services, improving efficiency, and reducing fraud. From opening bank accounts to receiving subsidies, filing taxes, and even obtaining a mobile connection, Aadhaar has become an essential part of daily life for Indian residents.</p>
+  </div>
+
+  <div class="mb-5">
+    <h2 class="text-info">Required Documents – Category-wise Breakdown</h2>
+    <p>For Aadhaar enrolment, you generally need documents for Proof of Identity (PoI), Proof of Address (PoA), and sometimes Proof of Relationship (PoR) for minors or dependents.</p>
+    
+    <h4>Proof of Identity (PoI):</h4>
+    <div class="row">
+      <div class="col-md-6">
+        <ul>
+          <li>Passport</li>
+          <li>PAN Card</li>
+          <li>Ration/PDS Photo Card</li>
+          <li>Voter ID</li>
+          <li>Driving License</li>
+          <li>Government Photo ID Cards</li>
+          <li>NREGS Job Card</li>
+        </ul>
+      </div>
+      <div class="col-md-6">
+        <ul>
+          <li>Photo ID from Educational Institution</li>
+          <li>Arms License</li>
+          <li>Photo Bank ATM/Credit Card</li>
+          <li>Pensioner/Freedom Fighter Card</li>
+          <li>Kisan Photo Passbook</li>
+          <li>CGHS/ECHS Photo Card</li>
+          <li>Postal Address Card</li>
+        </ul>
+      </div>
+    </div>
+    
+    <h4>Proof of Address (PoA):</h4>
+    <div class="row">
+      <div class="col-md-6">
+        <ul>
+          <li>Passport</li>
+          <li>Bank/Post Office Statement</li>
+          <li>Ration Card</li>
+          <li>Voter ID</li>
+          <li>Driving License</li>
+          <li>Utility Bills (not older than 3 months)</li>
+          <li>Property Tax Receipt</li>
+        </ul>
+      </div>
+      <div class="col-md-6">
+        <ul>
+          <li>Credit Card Statement</li>
+          <li>Insurance Policy</li>
+          <li>Registered Sale/Lease Agreement</li>
+          <li>Government Allotment Letter</li>
+          <li>Marriage Certificate with address</li>
+          <li>Bhamashah/Jan-Aadhaar Card</li>
+          <li>School Documents with address</li>
+        </ul>
+      </div>
+    </div>
+    
+    <h4>Proof of Relationship (for minors/dependents):</h4>
+    <ul>
+      <li>Parents' Passport</li>
+      <li>Birth Certificate</li>
+      <li>Marriage Certificate</li>
+      <li>Ration Card listing family members</li>
+      <li>Government family entitlement documents</li>
+    </ul>
+  </div>
+
+  <div class="mb-5">
+    <h2 class="text-info">Eligibility – Who Qualifies?</h2>
+    <ul>
+      <li><strong>Any individual residing in India:</strong> Regardless of age or gender
+        <ul>
+          <li>Indian Citizens</li>
+          <li>NRIs (resided 182+ days in preceding year)</li>
+          <li>Foreign Nationals (resided 182+ days in preceding year)</li>
+        </ul>
+      </li>
+      <li><strong>Newborns and Children:</strong> 
+        <ul>
+          <li>Below 5 years: Only demographic data and photo captured</li>
+          <li>Biometrics updated at ages 5 and 15</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="mb-5">
+    <h2 class="text-info">Application Procedure – Detailed Steps</h2>
+    <ol>
+      <li><strong>Locate Enrolment Centre:</strong> Via UIDAI website, mAadhaar app, or helpline 1947</li>
+      <li><strong>Fill Application Form:</strong> Obtain at centre or download from UIDAI website</li>
+      <li><strong>Submit Documents:</strong> Present original PoI and PoA for scanning</li>
+      <li><strong>Biometric Capture:</strong> 
+        <ul>
+          <li>10 fingerprints and iris scans</li>
+          <li>Only photo for children below 5</li>
+        </ul>
+      </li>
+      <li><strong>Photograph:</strong> Digital photo taken at centre</li>
+      <li><strong>Review and Acknowledge:</strong> Verify displayed details and receive EID slip</li>
+      <li><strong>Track Status:</strong> Using EID on UIDAI website</li>
+      <li><strong>Receive Aadhaar:</strong> 
+        <ul>
+          <li>Download e-Aadhaar from UIDAI website</li>
+          <li>Physical copy dispatched by post</li>
+        </ul>
+      </li>
+    </ol>
+  </div>
+
+  <div class="mb-5">
+    <h2 class="text-info">Trusted Websites – Official Sources</h2>
+    <ul>
+      <li><a href="https://uidai.gov.in/" target="_blank">Unique Identification Authority of India (UIDAI)</a></li>
+      <li><a href="https://myaadhaar.uidai.gov.in/" target="_blank">My Aadhaar Portal</a></li>
+    </ul>
+  </div>
+
+  <div class="mb-5">
+    <h2 class="text-info">FAQs & Tips</h2>
+    <div class="mb-3">
+      <strong class="text-danger">Q:</strong> Can I apply completely online?<br>
+      <span class="ms-3">A: No, physical visit required for biometrics but appointment can be booked online.</span>
+    </div>
+    <div class="mb-3">
+      <strong class="text-danger">Q:</strong> How long does generation take?<br>
+      <span class="ms-3">A: Typically 5-15 working days for e-Aadhaar, plus post time for physical copy.</span>
+    </div>
+    <div class="mb-3">
+      <strong class="text-danger">Q:</strong> What if I lose my acknowledgment slip?<br>
+      <span class="ms-3">A: Retrieve using registered mobile/email via "Retrieve EID/Aadhaar Number" on UIDAI.</span>
+    </div>
+    <div class="mb-3">
+      <strong class="text-danger">Q:</strong> Can I update details online?<br>
+      <span class="ms-3">A: Only demographic details if mobile is registered. Biometrics require centre visit.</span>
+    </div>
+    <div class="alert alert-success">
+      <strong>Important Tips:</strong>
+      <ul>
+        <li>Always carry original documents for verification</li>
+        <li>Thoroughly verify displayed details before acknowledgement</li>
+        <li>Ensure mobile number is linked for OTP services</li>
+        <li>Children's biometrics need updating at ages 5 and 15</li>
+      </ul>
+    </div>
+  </div>
+</div>
+{% endblock %}

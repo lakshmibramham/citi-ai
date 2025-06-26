@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+
+{% block title %}Driving License Application - Citizen AI{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+  <h1 class="text-center text-primary mb-4">Driving License Application</h1>
+
+  <div class="mb-4">
+    <p>A Driving License is a fundamental legal requirement for operating any motor vehicle on public roads in India. It serves as official permission granted by the government, certifying that the holder is competent and authorized to drive specific classes of vehicles. Issued by the Regional Transport Authority (RTA) or Regional Transport Office (RTO) of each state, it's a vital document for personal mobility and commercial operations alike.</p>
+  </div>
+
+  <div class="mb-5">
+    <h2 class="text-info">Brief Description – What is it?</h2>
+    <p>A Driving License is essentially a government authorization to drive. It specifies the class(es) of vehicles you are permitted to drive (e.g., motorcycles without gear, motorcycles with gear, light motor vehicles like cars, heavy motor vehicles like trucks or buses). It also contains your personal details, photograph, and signature, acting as a valid photo identification document. Beyond being a legal necessity for driving, it is often accepted as proof of identity and age for various other purposes.</p>
+  </div>
+
+  <div class="mb-5">
+    <h2 class="text-info">Required Documents – Stage-wise Breakdown</h2>
+    <p>Documents are crucial for both the Learner's License and the Permanent Driving License. Ensuring your documents are correct and complete will streamline the application process.</p>
+    
+    <h4>For Learner's License (LL):</h4>
+    <h5>Proof of Age (any one):</h5>
+    <ul>
+      <li>Birth Certificate: Most common and direct proof</li>
+      <li>Passport: Strong proof, often containing DoB</li>
+      <li>10th Standard Mark Sheet: From recognized board</li>
+      <li>PAN Card with DoB: If date of birth is printed</li>
+      <li>Aadhaar Card with DoB: Increasingly accepted</li>
+    </ul>
+    
+    <h5>Proof of Address (any one):</h5>
+    <ul>
+      <li>Aadhaar Card: Versatile for both identity and address</li>
+      <li>Electricity Bill: Not older than 3 months</li>
+      <li>Bank Passbook: With current address</li>
+      <li>Passport: Strong proof</li>
+      <li>Voter ID: Common and widely accepted</li>
+    </ul>
+    
+    <h5>Application Forms:</h5>
+    <ul>
+      <li>Form 1: Medical Fitness Declaration</li>
+      <li>Form 2: Learner's License Application</li>
+    </ul>
+    
+    <h4>For Permanent Driving License (DL):</h4>
+    <ul>
+      <li>Original Learner's License (30 days to 6 months old)</li>
+      <li>Form 4: Driving License Application</li>
+      <li>Medical Certificate (Form 1A) if applicable</li>
+      <li>Driving School Certificate (Form 5) if available</li>
+    </ul>
+  </div>
+
+  <div class="mb-5">
+    <h2 class="text-info">Eligibility – Who Can Apply?</h2>
+    
+    <h4>For Learner's License:</h4>
+    <ul>
+      <li>Motorcycles without gear (up to 50cc): Minimum 16 years with parent/guardian consent</li>
+      <li>Motorcycles with gear & light motor vehicles: Minimum 18 years</li>
+      <li>Commercial vehicles: Minimum 20 years with 1 year LMV license</li>
+    </ul>
+    
+    <h4>For Permanent Driving License:</h4>
+    <ul>
+      <li>Must have held Learner's License for at least 30 days (max 6 months)</li>
+      <li>Must demonstrate driving proficiency in practical test</li>
+    </ul>
+  </div>
+
+  <div class="mb-5">
+    <h2 class="text-info">Application Procedure – Comprehensive Steps</h2>
+    
+    <h4>For Learner's License:</h4>
+    <ol>
+      <li>Apply online at Parivahan Sewa portal</li>
+      <li>Fill Form 2 with personal details</li>
+      <li>Upload required documents</li>
+      <li>Book slot for Learner's test</li>
+      <li>Pay fees online</li>
+      <li>Appear for test at RTO</li>
+      <li>Receive Learner's License</li>
+    </ol>
+    
+    <h4>For Permanent Driving License:</h4>
+    <ol>
+      <li>Apply online after 30 days of LL</li>
+      <li>Fill Form 4</li>
+      <li>Upload documents</li>
+      <li>Book slot for driving test</li>
+      <li>Pay fees online</li>
+      <li>Appear for practical test at RTO</li>
+      <li>Receive Permanent License by post</li>
+    </ol>
+  </div>
+
+  <div class="mb-5">
+    <h2 class="text-info">Trusted Websites – Official Sources</h2>
+    <ul>
+      <li><a href="https://parivahan.gov.in/parivahan/" target="_blank">Ministry of Road Transport and Highways (Parivahan Sewa)</a></li>
+    </ul>
+  </div>
+
+  <div class="mb-5">
+    <h2 class="text-info">FAQs & Tips</h2>
+    <div class="mb-3">
+      <strong class="text-danger">Q:</strong> Is the Learner's License test difficult?<br>
+      <span class="ms-3">A: The test focuses on traffic signs and road rules. Study the RTO handbook or practice with online mock tests.</span>
+    </div>
+    <div class="mb-3">
+      <strong class="text-danger">Q:</strong> What happens if I fail the driving test?<br>
+      <span class="ms-3">A: You must wait 7 days and pay the re-test fee to attempt again.</span>
+    </div>
+    <div class="mb-3">
+      <strong class="text-danger">Q:</strong> Can I drive alone with a Learner's License?<br>
+      <span class="ms-3">A: No, you must be accompanied by a permanent license holder and display 'L' plates.</span>
+    </div>
+    <div class="alert alert-success">
+      <strong>Tips:</strong>
+      <ul>
+        <li>Practice driving extensively before the test</li>
+        <li>Check your local RTO's specific requirements</li>
+        <li>Ensure your test vehicle is in good condition</li>
+      </ul>
+    </div>
+  </div>
+</div>
+{% endblock %}

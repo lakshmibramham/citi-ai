@@ -1,0 +1,155 @@
+{% extends "base.html" %}
+
+{% block title %}Ration Card Application - Citizen AI{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+  <h1 class="text-center text-primary mb-4">Ration Card Application</h1>
+
+  <div class="mb-4">
+    <p>A Ration Card is a crucial document issued by the State Governments in India, primarily through their respective Department of Food, Civil Supplies, and Consumer Affairs. Its core function is to enable eligible households to purchase essential food grains and other commodities at highly subsidized prices through the Public Distribution System (PDS).</p>
+  </div>
+
+  <div class="mb-5">
+    <h2 class="text-info">Brief Description – What is it?</h2>
+    <p>The Ration Card is a household entitlement document that plays a pivotal role in India's social welfare framework, specifically under the National Food Security Act (NFSA). It aims to ensure food security for vulnerable sections of society by providing them with access to staple foods like rice, wheat, sugar, and kerosene at prices significantly lower than market rates.</p>
+  </div>
+
+  <div class="mb-5">
+    <h2 class="text-info">Required Documents – Andhra Pradesh Specific</h2>
+    
+    <div class="row">
+      <div class="col-md-6">
+        <h4>Essential Documents:</h4>
+        <ul>
+          <li><strong>Application Form:</strong> From MeeSeva or Sachivalayam</li>
+          <li><strong>Identity Proof:</strong> Aadhaar, Voter ID, PAN, etc.</li>
+          <li><strong>Address Proof:</strong> 
+            <ul>
+              <li>Aadhaar Card</li>
+              <li>Utility bills (<3 months old)</li>
+              <li>Bank statement</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-6">
+        <h4>Additional Requirements:</h4>
+        <ul>
+          <li><strong>Income Proof:</strong> 
+            <ul>
+              <li>Income Certificate</li>
+              <li>Salary slips/Pension certificate</li>
+            </ul>
+          </li>
+          <li><strong>Photographs:</strong> Head of family + adult members</li>
+          <li><strong>Family Details:</strong> Names, Aadhaar, relationships</li>
+          <li><strong>Surrender Certificate:</strong> If previously held card</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-5">
+    <h2 class="text-info">Eligibility – Andhra Pradesh Criteria</h2>
+    
+    <h4>Residency Requirements:</h4>
+    <ul>
+      <li>Must be permanent resident of Andhra Pradesh</li>
+      <li>No existing ration card from another state</li>
+    </ul>
+    
+    <h4>Card Types:</h4>
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <thead class="table-light">
+          <tr>
+            <th>Card Type</th>
+            <th>Eligibility</th>
+            <th>Benefits</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>White (BPL)</td>
+            <td>Below Poverty Line</td>
+            <td>Highest subsidy</td>
+          </tr>
+          <tr>
+            <td>Antyodaya (AAY)</td>
+            <td>Poorest of the poor</td>
+            <td>Maximum benefits</td>
+          </tr>
+          <tr>
+            <td>Pink (APL)</td>
+            <td>Above Poverty Line</td>
+            <td>Limited/no subsidies</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <h4>Disqualifications:</h4>
+    <ul>
+      <li>Government employees (except sanitary workers)</li>
+      <li>Four-wheeler owners (except commercial vehicles)</li>
+      <li>Income tax payees</li>
+      <li>Land exceeding limits (3 acres wet/10 acres dry)</li>
+    </ul>
+  </div>
+
+  <div class="mb-5">
+    <h2 class="text-info">Application Procedure – Andhra Pradesh</h2>
+    <ol>
+      <li><strong>Obtain Form:</strong> From MeeSeva/Sachivalayam or online via ap.meeseva.gov.in</li>
+      <li><strong>Fill Details:</strong> Complete family and income information</li>
+      <li><strong>Attach Documents:</strong> Self-attested copies for offline; scanned for online</li>
+      <li><strong>Submit Application:</strong> At Sachivalayam/MeeSeva or online portal</li>
+      <li><strong>Pay Fees:</strong> Nominal processing charge</li>
+      <li><strong>Verification:</strong> eKYC, field visit by VRO/Ward Secretary</li>
+      <li><strong>Track Status:</strong> Using reference number on vswsonline.ap.gov.in</li>
+      <li><strong>Receive Card:</strong> Digital via DigiLocker or physical copy</li>
+    </ol>
+  </div>
+
+  <div class="mb-5">
+    <h2 class="text-info">Trusted Websites – Andhra Pradesh</h2>
+    <ul>
+      <li><a href="https://civilsupplies.ap.gov.in/" target="_blank" class="text-decoration-none">AP Food & Civil Supplies Department</a></li>
+      <li><a href="https://ap.meeseva.gov.in/" target="_blank" class="text-decoration-none">MeeSeva Portal</a></li>
+      <li><a href="https://vswsonline.ap.gov.in/website" target="_blank" class="text-decoration-none">AP Seva Portal</a></li>
+      <li><a href="https://aepos.ap.gov.in/ePos/" target="_blank" class="text-decoration-none">AP e-POS System</a></li>
+    </ul>
+  </div>
+
+  <div class="mb-5">
+    <h2 class="text-info">FAQs & Important Tips</h2>
+    
+    <div class="mb-3">
+      <strong class="text-danger">Q:</strong> What are the card types in AP?<br>
+      <span class="ms-3">A: White (BPL), Antyodaya (AAY), and Pink (APL) cards with varying benefits.</span>
+    </div>
+    
+    <div class="mb-3">
+      <strong class="text-danger">Q:</strong> Can I modify family details later?<br>
+      <span class="ms-3">A: Yes, through member addition/deletion at MeeSeva/Sachivalayam.</span>
+    </div>
+    
+    <div class="mb-3">
+      <strong class="text-danger">Q:</strong> How to link Aadhaar?<br>
+      <span class="ms-3">A: Online via aepos.ap.gov.in or at Fair Price Shops.</span>
+    </div>
+    
+    <div class="alert alert-success mt-4">
+      <h5>Key Tips:</h5>
+      <ul>
+        <li>Always provide accurate income details to avoid penalties</li>
+        <li>Keep your application reference number safe for tracking</li>
+        <li>Use DigiLocker for digital ration card access</li>
+        <li>Update card details for any address/income changes</li>
+        <li>Processing may take 3-4 weeks including verification</li>
+      </ul>
+    </div>
+  </div>
+</div>
+{% endblock %}
